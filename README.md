@@ -6,7 +6,7 @@ Landing page para documentação e estudo de exercícios de Banco de Dados da fa
 Você pode acessar o projeto de duas formas:
 
 1. **Via GitHub Pages** (mais prático):  
-   👉 [Acesse aqui](https://tsb89.github.io/link)  
+   👉 [Acesse aqui](https://tsb89.github.io/banco-de-dados-252/)  
    
 2. **Localmente no navegador**:
    * Clone o repositório ou baixe os arquivos.
