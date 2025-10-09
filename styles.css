@@ -311,3 +311,7 @@ body {
     position: relative;
     /* necessário para posicionar o botão dentro do bloco */
 }
+
+.exercise-section[data-topico="base"] .question-number {
+    background: linear-gradient(135deg, #43cea2 0%, #185a9d 100%);
+}
