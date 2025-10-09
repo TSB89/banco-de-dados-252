@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercícios de Banco de Dados</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>📚 Exercícios de Banco de Dados</h1>
+            <p class="subtitle">Documentação e resolução de questões</p>
+        </header>
+
+        <div class="dica-site">
+            Site para praticar SQL online
+            <br>
+            -<a href="https://livesql.oracle.com/next/" target="_blank"> Oracle Live SQL </a>-
+        </div>
+
+
+        <div class="filters">
+            <button class="filter-btn active" onclick="filtrarPorTopico('todos')">Todos</button>
+            <button class="filter-btn" onclick="filtrarPorTopico('fase 1')">Fase 1</button>
+            <button class="filter-btn" onclick="filtrarPorTopico('fase 2')">Fase 2</button>
+            <button class="filter-btn" onclick="filtrarPorTopico('base')">Base de Dados</button>
+
+        </div>
+
+        <main class="content" id="exercicios-container">
+            <!-- Os exercícios serão renderizados aqui via JavaScript -->
+        </main>
+
+        <footer class="footer">
+            <p>© 2025 - Exercícios de Banco de Dados | <span id="total-exercicios"></span> exercícios cadastrados</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
