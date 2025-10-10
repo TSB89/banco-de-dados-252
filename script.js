@@ -1,26 +1,26 @@
 // Classe Exercicio - Representa um exercício de banco de dados
 class Exercicio {
-    constructor(numero, questao, resposta, codigo = null, topico = 'conceitos') {
-        this.numero = numero;
-        this.questao = questao;
-        this.resposta = resposta;
-        this.codigo = codigo;
-        this.topico = topico;
-    }
+  constructor(numero, questao, resposta, codigo = null, topico = 'conceitos') {
+    this.numero = numero;
+    this.questao = questao;
+    this.resposta = resposta;
+    this.codigo = codigo;
+    this.topico = topico;
+  }
 
-    // Método para renderizar o HTML do exercício
-    renderizar() {
-        const codigoHTML = this.codigo
-            ? `
+  // Método para renderizar o HTML do exercício
+  renderizar() {
+    const codigoHTML = this.codigo
+      ? `
         <div class="code-block">
             <button class="copy-btn" onclick="copiarCodigo(this)">📋 Copiar</button>
             <code>${this.escapeHTML(this.codigo)}</code>
         </div>
       `
-            : '';
+      : '';
 
 
-        return `
+    return `
             <section class="exercise-section" data-topico="${this.topico}">
                 <div class="question">
                     <div class="question-header">
@@ -36,75 +36,75 @@ class Exercicio {
                 </div>
             </section>
         `;
-    }
+  }
 
-    // Método auxiliar para escapar HTML e evitar injeção
-    escapeHTML(text) {
-        const div = document.createElement('div');
-        div.textContent = text;
-        return div.innerHTML;
-    }
+  // Método auxiliar para escapar HTML e evitar injeção
+  escapeHTML(text) {
+    const div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
+  }
 
-    // Retorna o nome formatado do tópico
-    getTopicoNome() {
-        const topicos = {
-            'fase 1': 'Fase 1',
-            'fase 2': 'Fase 2',
-        };
-        return topicos[this.topico] || 'Geral';
-    }
+  // Retorna o nome formatado do tópico
+  getTopicoNome() {
+    const topicos = {
+      'fase 1': 'Fase 1',
+      'fase 2': 'Fase 2',
+    };
+    return topicos[this.topico] || 'Geral';
+  }
 }
 
 // Classe GerenciadorExercicios - Gerencia a coleção de exercícios
 class GerenciadorExercicios {
-    constructor() {
-        this.exercicios = [];
-        this.topicoAtual = 'todos';
+  constructor() {
+    this.exercicios = [];
+    this.topicoAtual = 'todos';
+  }
+
+  // Adiciona um novo exercício
+  adicionarExercicio(exercicio) {
+    this.exercicios.push(exercicio);
+  }
+
+  // Adiciona múltiplos exercícios
+  adicionarExercicios(exercicios) {
+    exercicios.forEach(ex => this.adicionarExercicio(ex));
+  }
+
+  // Filtra exercícios por tópico
+  filtrarPorTopico(topico) {
+    this.topicoAtual = topico;
+    if (topico === 'todos') {
+      return this.exercicios;
     }
+    return this.exercicios.filter(ex => ex.topico === topico);
+  }
 
-    // Adiciona um novo exercício
-    adicionarExercicio(exercicio) {
-        this.exercicios.push(exercicio);
-    }
+  // Renderiza todos os exercícios filtrados
+  renderizar(topico = 'todos') {
+    const container = document.getElementById('exercicios-container');
+    const exerciciosFiltrados = this.filtrarPorTopico(topico);
 
-    // Adiciona múltiplos exercícios
-    adicionarExercicios(exercicios) {
-        exercicios.forEach(ex => this.adicionarExercicio(ex));
-    }
-
-    // Filtra exercícios por tópico
-    filtrarPorTopico(topico) {
-        this.topicoAtual = topico;
-        if (topico === 'todos') {
-            return this.exercicios;
-        }
-        return this.exercicios.filter(ex => ex.topico === topico);
-    }
-
-    // Renderiza todos os exercícios filtrados
-    renderizar(topico = 'todos') {
-        const container = document.getElementById('exercicios-container');
-        const exerciciosFiltrados = this.filtrarPorTopico(topico);
-
-        if (exerciciosFiltrados.length === 0) {
-            container.innerHTML = `
+    if (exerciciosFiltrados.length === 0) {
+      container.innerHTML = `
                 <div class="empty-state">
                     <h3>😕 Nenhum exercício encontrado</h3>
                     <p>Não há exercícios cadastrados para este tópico.</p>
                 </div>
             `;
-            return;
-        }
-
-        container.innerHTML = exerciciosFiltrados
-            .map(ex => ex.renderizar())
-            .join('');
+      return;
     }
 
-    // Retorna o total de exercícios
-    getTotalExercicios() {
-        return this.exercicios.length;
-    }
+    container.innerHTML = exerciciosFiltrados
+      .map(ex => ex.renderizar())
+      .join('');
+  }
+
+  // Retorna o total de exercícios
+  getTotalExercicios() {
+    return this.exercicios.length;
+  }
 }
 
 // Instância global do gerenciador
@@ -112,71 +112,94 @@ const gerenciador = new GerenciadorExercicios();
 
 // Função para filtrar por tópico (chamada pelos botões)
 function filtrarPorTopico(topico) {
-    // Remove classe active de todos os botões
-    document.querySelectorAll('.filter-btn').forEach(btn => {
-        btn.classList.remove('active');
-    });
+  // Remove classe active de todos os botões
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.classList.remove('active');
+  });
 
-    // Adiciona classe active no botão clicado
-    event.target.classList.add('active');
+  // Adiciona classe active no botão clicado
+  event.target.classList.add('active');
 
-    // Renderiza os exercícios filtrados
-    gerenciador.renderizar(topico);
+  // Renderiza os exercícios filtrados
+  gerenciador.renderizar(topico);
 }
 
 // Função para inicializar os exercícios
 function inicializarExercicios() {
-    // Exercícios
-    const exercicios = [
-        new Exercicio(
-            1,
-            'Selecione o nome do empregado e o nome do departamento em que ele está lotado, de todos os empregados que participam de projetos;',
-            `<p>Explicação</p>
+  // Exercícios
+  const exercicios = [
+    new Exercicio(
+      1,
+  'Selecione a matrícula, o nome do empregado e o nome do departamento em que ele está lotado, de todos os empregados que participam de projetos;',
+  `
+  <p>💡 <strong>Leitura passo a passo do código:</strong></p>
+  <ul>
+    <li><strong>SELECT DISTINCT e.MATRICULA, e.NOME, d.NOME</strong><br>
+      Seleciona as colunas que queremos exibir: matrícula e nome do empregado (da tabela EMPREGADO) e o nome do departamento (da tabela DEPARTAMENTO). 
+      O <code>DISTINCT</code> remove repetições, caso um empregado participe de mais de um projeto.
+    </li>
+
+    <li><strong>FROM EMPREGADO e</strong><br>
+      Define a tabela principal de busca como <code>EMPREGADO</code> e dá a ela o apelido <code>e</code> (para simplificar o restante do comando).
+    </li>
+
+    <li><strong>JOIN DEPARTAMENTO d ON e.DEPTO = d.CODDEP</strong><br>
+      Faz um <em>INNER JOIN</em> entre EMPREGADO e DEPARTAMENTO, conectando o código do departamento do empregado (<code>e.DEPTO</code>) 
+      ao código do departamento (<code>d.CODDEP</code>). Assim, só aparecem empregados com departamento válido.
+    </li>
+
+    <li><strong>JOIN ALOCACAO a ON e.MATRICULA = a.MATRIC</strong><br>
+      Faz outro <em>INNER JOIN</em> com a tabela <code>ALOCACAO</code>, garantindo que só apareçam empregados que participam de pelo menos um projeto.
+    </li>
+  </ul>`,
+  `
+  SELECT DISTINCT e.MATRICULA, e.NOME, d.NOME
+  FROM EMPREGADO e
+  JOIN DEPARTAMENTO d ON e.DEPTO = d.CODDEP
+  JOIN ALOCACAO a ON e.MATRICULA = a.MATRIC
+  `,
+      'fase 1'
+    ),
+
+    new Exercicio(
+      2,
+      'Retorne o nome e endereço dos empregados, além do nome dos departamentos nos quais eles estão lotados, dos funcionários que não estão em nenhuma projeto do departamento de Sistemas;',
+      `<p>Explicação</p>
 
             </ul>`,
-            `Resposta`,
-            'fase 1'
-        ),
+      `Resposta`,
+      'fase 1'
+    ),
 
-        new Exercicio(
-            2,
-            'Retorne o nome e endereço dos empregados, além do nome dos departamentos nos quais eles estão lotados, dos funcionários que não estão em nenhuma projeto do departamento de Sistemas;',
-            `<p>Explicação</p>
-
-            </ul>`,
-            `Resposta`,
-            'fase 1'
-        ),
-
-        new Exercicio(
-            3,
-            'Obtenha a matrícula e o nome de todos os empregados que têm filhos, mas que não estão em nenhum projeto;',
-            `<p>Explicação</p>
+    new Exercicio(
+      3,
+      'Obtenha a matrícula e o nome de todos os empregados que têm filhos, mas que não estão em nenhum projeto;',
+      `<p>Explicação</p>
 
             </ul>`,
-            `Resposta`,
-            'fase 1'
-        ),
+      `Resposta`,
+      'fase 1'
+    ),
 
-        new Exercicio(
-            4,
-            'Selecione o nome e o salário do funcionário, além do código do departamento de todos os funcionários alocados nos projetos 10,11 ou 12; funcionam as transações em banco de dados?',
-            `<p>Explicação</p>
+    new Exercicio(
+      4,
+      'Selecione o nome e o salário do funcionário, além do código do departamento de todos os funcionários alocados nos projetos 10,11 ou 12; funcionam as transações em banco de dados?',
+      `<p>Explicação</p>
 
             </ul>`,
-            `Resposta`,
-            'fase 1'
-        )];
+      `Resposta`,
+      'fase 1'
+    )];
 
-    // === Base de dados ===
-    const basesDeDados = [
-        new Exercicio(
-            '1 - 25',
-            'Base de Dados das questões (LiveSQL)',
-            `<p></p>`,
+  // === Base de dados ===
+  const basesDeDados = [
+    new Exercicio(
+      '1 - 25',
+      'Base de Dados das questões (LiveSQL)',
+      `<p></p>`,
 
 
-            `CREATE TABLE departamentos (
+      `CREATE TABLE departamentos (
     coddep INT PRIMARY KEY,
     nome VARCHAR(100)
 );
@@ -351,15 +374,15 @@ ALTER TABLE DEPARTAMENTO
 -- SELECT * FROM ALOCACAO;
 -- SELECT * FROM DEPENDENTE;
 );`,
-            'base'
-        ),
-                new Exercicio(
-            '1 - 25',
-            'Base de Dados das questões (MySQL)',
-            `<p></p>`,
+      'base'
+    ),
+    new Exercicio(
+      '1 - 25',
+      'Base de Dados das questões (MySQL)',
+      `<p></p>`,
 
 
-            `-- LIMPEZA (caso já existam as tabelas)
+      `-- LIMPEZA (caso já existam as tabelas)
 DROP TABLE IF EXISTS ALOCACAO;
 DROP TABLE IF EXISTS DEPENDENTE;
 DROP TABLE IF EXISTS PROJETO;
@@ -486,36 +509,36 @@ ALTER TABLE DEPARTAMENTO
   ADD CONSTRAINT FK_DEPARTAMENTO_GERENTE
   FOREIGN KEY (GERENTE) REFERENCES EMPREGADO (MATRICULA);
 `,
-            'base'
-        ),
-    ];
+      'base'
+    ),
+  ];
 
-    // Adiciona tudo ao gerenciador
-    gerenciador.adicionarExercicios(exercicios);
-    gerenciador.adicionarExercicios(basesDeDados);
+  // Adiciona tudo ao gerenciador
+  gerenciador.adicionarExercicios(exercicios);
+  gerenciador.adicionarExercicios(basesDeDados);
 
-    // Renderiza os exercícios (padrão: "todos")
-    gerenciador.renderizar();
+  // Renderiza os exercícios (padrão: "todos")
+  gerenciador.renderizar();
 
-    // Atualiza o total
-    document.getElementById('total-exercicios').textContent =
-        gerenciador.getTotalExercicios();
+  // Atualiza o total
+  document.getElementById('total-exercicios').textContent =
+    gerenciador.getTotalExercicios();
 }
 
 // Inicializa quando a página carregar
 document.addEventListener('DOMContentLoaded', inicializarExercicios);
 
 function copiarCodigo(botao) {
-    const codeElement = botao.nextElementSibling; // o <code> que vem logo depois
-    const codigo = codeElement.innerText;
+  const codeElement = botao.nextElementSibling; // o <code> que vem logo depois
+  const codigo = codeElement.innerText;
 
-    // Copia o texto para a área de transferência
-    navigator.clipboard.writeText(codigo).then(() => {
-        botao.textContent = "✅ Copiado!";
-        setTimeout(() => {
-            botao.textContent = "📋 Copiar";
-        }, 2000);
-    }).catch(() => {
-        botao.textContent = "❌ Erro!";
-    });
+  // Copia o texto para a área de transferência
+  navigator.clipboard.writeText(codigo).then(() => {
+    botao.textContent = "✅ Copiado!";
+    setTimeout(() => {
+      botao.textContent = "📋 Copiar";
+    }, 2000);
+  }).catch(() => {
+    botao.textContent = "❌ Erro!";
+  });
 }
