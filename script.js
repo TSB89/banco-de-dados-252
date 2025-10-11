@@ -135,7 +135,7 @@ function inicializarExercicios() {
   <p>💡 <strong>Leitura passo a passo do código:</strong></p>
   <ul>
     <li><strong>SELECT DISTINCT e.MATRICULA, e.NOME, d.NOME</strong><br>
-      Seleciona as colunas que queremos exibir: matrícula e nome do empregado (da tabela EMPREGADO) e o nome do departamento (da tabela DEPARTAMENTO). 
+      Seleciona as colunas que queremos exibir: matrícula, nome do empregado (da tabela EMPREGADO) e o nome do departamento (da tabela DEPARTAMENTO). 
       O <code>DISTINCT</code> remove repetições, caso um empregado participe de mais de um projeto.
     </li>
 
