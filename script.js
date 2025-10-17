@@ -29,11 +29,17 @@ class Exercicio {
                     </div>
                     <h2>${this.questao}</h2>
                 </div>
-                <div class="answer-card">
-                    <h3>Resposta:</h3>
-                    ${this.resposta}
-                    ${codigoHTML}
-                </div>
+<div class="answer-card">
+    <button class="toggle-btn" onclick="toggleResposta(this)">
+        ➕ Mostrar Resposta
+    </button>
+    <div class="resposta-conteudo" style="display:none;">
+        <h3>Resposta:</h3>
+        ${this.resposta}
+        ${codigoHTML}
+    </div>
+</div>
+
             </section>
         `;
   }
@@ -540,5 +546,13 @@ function copiarCodigo(botao) {
     }, 2000);
   }).catch(() => {
     botao.textContent = "❌ Erro!";
-  });
+  }); 
+}
+
+function toggleResposta(botao) {
+  const conteudo = botao.nextElementSibling;
+  const visivel = conteudo.style.display === "block";
+
+  conteudo.style.display = visivel ? "none" : "block";
+  botao.textContent = visivel ? "➕ Mostrar Resposta" : "➖ Ocultar Resposta";
 }
