@@ -16,12 +16,252 @@
         </header>
 
         <div class="dica-site">
-            Sites para praticar SQL online
-            <br>
+            <h2>Sites para praticar SQL online</h1>
             <a href="https://livesql.oracle.com/next/" target="_blank">Oracle Live SQL</a>
             ou <a href="https://pg-sql.com/" target="_blank">Postgre Live SQL</a>
-
         </div>
+
+        <!-- 🔽 VISUALIZAÇÃO DO BANCO DE DADOS -->
+        <section class="db-exemplo">
+            <h2>📊 Visualização do Banco de Dados</h2>
+            <p>Modelo visual das tabelas para facilitar a resolução das questões.</p>
+
+            <div class="db-table">
+                <h3>🏢 DEPARTAMENTO</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>CODDEP</th>
+                            <th>NOME</th>
+                            <th>GERENTE</th>
+                            <th>DATAINI</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>d1</td>
+                            <td>Sistemas</td>
+                            <td>100</td>
+                            <td>2000-01-01</td>
+                        </tr>
+                        <tr>
+                            <td>d2</td>
+                            <td>Física</td>
+                            <td>101</td>
+                            <td>2004-01-01</td>
+                        </tr>
+                        <tr>
+                            <td>d3</td>
+                            <td>Matemática</td>
+                            <td>104</td>
+                            <td>2002-01-01</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="db-table">
+                <h3>👩‍💼 EMPREGADO</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>MATRICULA</th>
+                            <th>NOME</th>
+                            <th>SALARIO</th>
+                            <th>DEPTO</th>
+                            <th>SEXO</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>100</td>
+                            <td>Ana Ananias Alves</td>
+                            <td>1200.00</td>
+                            <td>d1</td>
+                            <td>F</td>
+                        </tr>
+                        <tr>
+                            <td>101</td>
+                            <td>Bernardo Borges Brasão</td>
+                            <td>900.00</td>
+                            <td>d2</td>
+                            <td>M</td>
+                        </tr>
+                        <tr>
+                            <td>102</td>
+                            <td>Cleiton Carmelo Cruz</td>
+                            <td>800.00</td>
+                            <td>d2</td>
+                            <td>M</td>
+                        </tr>
+                        <tr>
+                            <td>103</td>
+                            <td>Diego Dorneles</td>
+                            <td>900.00</td>
+                            <td>d1</td>
+                            <td>M</td>
+                        </tr>
+                        <tr>
+                            <td>104</td>
+                            <td>Érika Esdras</td>
+                            <td>700.00</td>
+                            <td>d3</td>
+                            <td>F</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="db-table">
+                <h3>🧮 PROJETO</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>CODPROJ</th>
+                            <th>NOME</th>
+                            <th>LOCAL</th>
+                            <th>DEPART</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Projeto1</td>
+                            <td>Campina Grande</td>
+                            <td>d1</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Projeto2</td>
+                            <td>Patos</td>
+                            <td>d3</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>Projeto3</td>
+                            <td>Fortaleza</td>
+                            <td>d2</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>Projeto4</td>
+                            <td>Campina Grande</td>
+                            <td>d1</td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>Projeto5</td>
+                            <td>Patos</td>
+                            <td>d1</td>
+                        </tr>
+                        <tr>
+                            <td>6</td>
+                            <td>Projeto6</td>
+                            <td>Natal</td>
+                            <td>d2</td>
+                        </tr>
+                        <tr>
+                            <td>7</td>
+                            <td>Projeto7</td>
+                            <td>Natal</td>
+                            <td>d3</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="db-table">
+                <h3>🧾 ALOCAÇÃO</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>MATRIC</th>
+                            <th>CODIGOP</th>
+                            <th>HORAS</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>100</td>
+                            <td>1</td>
+                            <td>5</td>
+                        </tr>
+                        <tr>
+                            <td>104</td>
+                            <td>7</td>
+                            <td>5</td>
+                        </tr>
+                        <tr>
+                            <td>100</td>
+                            <td>3</td>
+                            <td>10</td>
+                        </tr>
+                        <tr>
+                            <td>103</td>
+                            <td>2</td>
+                            <td>5</td>
+                        </tr>
+                        <tr>
+                            <td>100</td>
+                            <td>6</td>
+                            <td>2</td>
+                        </tr>
+                        <tr>
+                            <td>101</td>
+                            <td>4</td>
+                            <td>5</td>
+                        </tr>
+                        <tr>
+                            <td>102</td>
+                            <td>5</td>
+                            <td>10</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="db-table">
+                <h3>👨‍👩‍👧 DEPENDENTE</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>CODDEPEND</th>
+                            <th>MAT</th>
+                            <th>NOME</th>
+                            <th>SEXO</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>101</td>
+                            <td>Bernardo Borges Brasão</td>
+                            <td>M</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>101</td>
+                            <td>Beatriz Borges Brasão</td>
+                            <td>F</td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>104</td>
+                            <td>Eduardo Esdras Euler</td>
+                            <td>M</td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>103</td>
+                            <td>Dayse Dorneles</td>
+                            <td>F</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+
 
 
         <div class="filters">

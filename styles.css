@@ -317,22 +317,84 @@ body {
 }
 
 .toggle-btn {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
-  border: none;
-  padding: 10px 15px;
-  border-radius: 10px;
-  cursor: pointer;
-  font-weight: bold;
-  font-size: 0.9rem;
-  transition: all 0.3s ease;
-  margin-bottom: 10px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    margin-bottom: 10px;
 }
 
 .toggle-btn:hover {
-  background: linear-gradient(135deg, #5a6fd1 0%, #6c3fa2 100%);
+    background: linear-gradient(135deg, #5a6fd1 0%, #6c3fa2 100%);
 }
 
 .resposta-conteudo {
-  animation: fadeIn 0.3s ease;
+    animation: fadeIn 0.3s ease;
+}
+
+/* === Visualização real do Banco de Dados === */
+.db-exemplo {
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    margin-bottom: 40px;
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.1);
+}
+
+.db-exemplo h2 {
+    color: #4a4a9d;
+    margin-bottom: 5px;
+    text-align: center;
+}
+
+.db-exemplo p {
+    text-align: center;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.db-table {
+    margin-bottom: 25px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.db-table h3 {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 10px;
+    font-size: 1rem;
+}
+
+.db-table table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+}
+
+.db-table th,
+.db-table td {
+    padding: 8px 12px;
+    border-bottom: 1px solid #eee;
+    text-align: left;
+}
+
+.db-table th {
+    background-color: #f5f5ff;
+    color: #333;
+    font-weight: bold;
+}
+
+.db-table tr:nth-child(even) {
+    background: #fafaff;
+}
+
+.db-table tr:hover {
+    background: #f0f0ff;
 }
