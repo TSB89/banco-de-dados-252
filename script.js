@@ -107,10 +107,6 @@ class GerenciadorExercicios {
       .join('');
   }
 
-  // Retorna o total de exercícios
-  getTotalExercicios() {
-    return this.exercicios.length;
-  }
 }
 
 // Instância global do gerenciador
@@ -691,9 +687,6 @@ function inicializarExercicios() {
   // Renderiza os exercícios (padrão: "todos")
   gerenciador.renderizar();
 
-  // Atualiza o total
-  document.getElementById('total-exercicios').textContent =
-    gerenciador.getTotalExercicios();
 }
 
 // Inicializa quando a página carregar
