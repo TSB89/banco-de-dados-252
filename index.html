@@ -12,264 +12,605 @@
     <div class="container">
         <header class="header">
             <h1>📚 Exercícios de Banco de Dados</h1>
-            <p class="subtitle">Documentação e resolução de questões</p>
+            <p class="subtitle">Documentação e resolução de questões.</p>
         </header>
 
         <div class="dica-site">
-            <h2>Sites para praticar SQL online</h1>
+            <h2>Sites para praticar SQL online</h2>
+            <a href="https://pg-sql.com/" target="_blank">Postgre Live SQL</a> ou
             <a href="https://livesql.oracle.com/next/" target="_blank">Oracle Live SQL</a>
-            ou <a href="https://pg-sql.com/" target="_blank">Postgre Live SQL</a>
+
         </div>
 
-        <!-- 🔽 VISUALIZAÇÃO DO BANCO DE DADOS -->
+        <!-- 🔽 VISUALIZAÇÃO E BASE DO BANCO DE DADOS -->
         <section class="db-exemplo">
-            <h2>📊 Visualização do Banco de Dados</h2>
-            <p>Modelo visual das tabelas para facilitar a resolução das questões.</p>
 
-            <div class="db-table">
-                <h3>🏢 DEPARTAMENTO</h3>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>CODDEP</th>
-                            <th>NOME</th>
-                            <th>GERENTE</th>
-                            <th>DATAINI</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>d1</td>
-                            <td>Sistemas</td>
-                            <td>100</td>
-                            <td>2000-01-01</td>
-                        </tr>
-                        <tr>
-                            <td>d2</td>
-                            <td>Física</td>
-                            <td>101</td>
-                            <td>2004-01-01</td>
-                        </tr>
-                        <tr>
-                            <td>d3</td>
-                            <td>Matemática</td>
-                            <td>104</td>
-                            <td>2002-01-01</td>
-                        </tr>
-                    </tbody>
-                </table>
+            <!-- BOTÕES LADO A LADO -->
+            <div class="db-botoes">
+                <button class="toggle-btn" onclick="toggleBanco(this)">
+                    📊 Mostrar Tabela de Dados
+                </button>
+
+                <button class="toggle-btn" onclick="toggleBase(this)">
+                    💾 Mostrar Banco de Dados
+                </button>
             </div>
 
-            <div class="db-table">
-                <h3>👩‍💼 EMPREGADO</h3>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>MATRICULA</th>
-                            <th>NOME</th>
-                            <th>SALARIO</th>
-                            <th>DEPTO</th>
-                            <th>SEXO</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>100</td>
-                            <td>Ana Ananias Alves</td>
-                            <td>1200.00</td>
-                            <td>d1</td>
-                            <td>F</td>
-                        </tr>
-                        <tr>
-                            <td>101</td>
-                            <td>Bernardo Borges Brasão</td>
-                            <td>900.00</td>
-                            <td>d2</td>
-                            <td>M</td>
-                        </tr>
-                        <tr>
-                            <td>102</td>
-                            <td>Cleiton Carmelo Cruz</td>
-                            <td>800.00</td>
-                            <td>d2</td>
-                            <td>M</td>
-                        </tr>
-                        <tr>
-                            <td>103</td>
-                            <td>Diego Dorneles</td>
-                            <td>900.00</td>
-                            <td>d1</td>
-                            <td>M</td>
-                        </tr>
-                        <tr>
-                            <td>104</td>
-                            <td>Érika Esdras</td>
-                            <td>700.00</td>
-                            <td>d3</td>
-                            <td>F</td>
-                        </tr>
-                    </tbody>
-                </table>
+            <!-- CONTEÚDO: BANCO DE DADOS (as tabelas) -->
+            <div class="db-conteudo" style="display: none;">
+                <h2>Visualização do Banco de Dados</h2>
+                <p>Modelo visual das tabelas para facilitar a resolução das questões.</p>
+                <div class="db-table">
+                    <h3>🏢 DEPARTAMENTO</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>CODDEP</th>
+                                <th>NOME</th>
+                                <th>GERENTE</th>
+                                <th>DATAINI</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>d1</td>
+                                <td>Sistemas</td>
+                                <td>100</td>
+                                <td>2000-01-01</td>
+                            </tr>
+                            <tr>
+                                <td>d2</td>
+                                <td>Física</td>
+                                <td>101</td>
+                                <td>2004-01-01</td>
+                            </tr>
+                            <tr>
+                                <td>d3</td>
+                                <td>Matemática</td>
+                                <td>104</td>
+                                <td>2002-01-01</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="db-table">
+                    <h3>👩‍💼 EMPREGADO</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>MATRICULA</th>
+                                <th>NOME</th>
+                                <th>SALARIO</th>
+                                <th>DEPTO</th>
+                                <th>SEXO</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>100</td>
+                                <td>Ana Ananias Alves</td>
+                                <td>1200.00</td>
+                                <td>d1</td>
+                                <td>F</td>
+                            </tr>
+                            <tr>
+                                <td>101</td>
+                                <td>Bernardo Borges Brasão</td>
+                                <td>900.00</td>
+                                <td>d2</td>
+                                <td>M</td>
+                            </tr>
+                            <tr>
+                                <td>102</td>
+                                <td>Cleiton Carmelo Cruz</td>
+                                <td>800.00</td>
+                                <td>d2</td>
+                                <td>M</td>
+                            </tr>
+                            <tr>
+                                <td>103</td>
+                                <td>Diego Dorneles</td>
+                                <td>900.00</td>
+                                <td>d1</td>
+                                <td>M</td>
+                            </tr>
+                            <tr>
+                                <td>104</td>
+                                <td>Érika Esdras</td>
+                                <td>700.00</td>
+                                <td>d3</td>
+                                <td>F</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="db-table">
+                    <h3>🧮 PROJETO</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>CODPROJ</th>
+                                <th>NOME</th>
+                                <th>LOCAL</th>
+                                <th>DEPART</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>Projeto1</td>
+                                <td>Campina Grande</td>
+                                <td>d1</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>Projeto2</td>
+                                <td>Patos</td>
+                                <td>d3</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>Projeto3</td>
+                                <td>Fortaleza</td>
+                                <td>d2</td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>Projeto4</td>
+                                <td>Campina Grande</td>
+                                <td>d1</td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td>Projeto5</td>
+                                <td>Patos</td>
+                                <td>d1</td>
+                            </tr>
+                            <tr>
+                                <td>6</td>
+                                <td>Projeto6</td>
+                                <td>Natal</td>
+                                <td>d2</td>
+                            </tr>
+                            <tr>
+                                <td>7</td>
+                                <td>Projeto7</td>
+                                <td>Natal</td>
+                                <td>d3</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="db-table">
+                    <h3>🧾 ALOCACAO</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>MATRIC</th>
+                                <th>CODIGOP</th>
+                                <th>HORAS</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>100</td>
+                                <td>1</td>
+                                <td>5</td>
+                            </tr>
+                            <tr>
+                                <td>104</td>
+                                <td>7</td>
+                                <td>5</td>
+                            </tr>
+                            <tr>
+                                <td>100</td>
+                                <td>3</td>
+                                <td>10</td>
+                            </tr>
+                            <tr>
+                                <td>103</td>
+                                <td>2</td>
+                                <td>5</td>
+                            </tr>
+                            <tr>
+                                <td>100</td>
+                                <td>6</td>
+                                <td>2</td>
+                            </tr>
+                            <tr>
+                                <td>101</td>
+                                <td>4</td>
+                                <td>5</td>
+                            </tr>
+                            <tr>
+                                <td>102</td>
+                                <td>5</td>
+                                <td>10</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="db-table">
+                    <h3>👨‍👩‍👧 DEPENDENTE</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>CODDEPEND</th>
+                                <th>MAT</th>
+                                <th>NOME</th>
+                                <th>SEXO</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>101</td>
+                                <td>Bernardo Borges Brasão</td>
+                                <td>M</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>101</td>
+                                <td>Beatriz Borges Brasão</td>
+                                <td>F</td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>104</td>
+                                <td>Eduardo Esdras Euler</td>
+                                <td>M</td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>103</td>
+                                <td>Dayse Dorneles</td>
+                                <td>F</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
             </div>
 
-            <div class="db-table">
-                <h3>🧮 PROJETO</h3>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>CODPROJ</th>
-                            <th>NOME</th>
-                            <th>LOCAL</th>
-                            <th>DEPART</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>Projeto1</td>
-                            <td>Campina Grande</td>
-                            <td>d1</td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>Projeto2</td>
-                            <td>Patos</td>
-                            <td>d3</td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>Projeto3</td>
-                            <td>Fortaleza</td>
-                            <td>d2</td>
-                        </tr>
-                        <tr>
-                            <td>4</td>
-                            <td>Projeto4</td>
-                            <td>Campina Grande</td>
-                            <td>d1</td>
-                        </tr>
-                        <tr>
-                            <td>5</td>
-                            <td>Projeto5</td>
-                            <td>Patos</td>
-                            <td>d1</td>
-                        </tr>
-                        <tr>
-                            <td>6</td>
-                            <td>Projeto6</td>
-                            <td>Natal</td>
-                            <td>d2</td>
-                        </tr>
-                        <tr>
-                            <td>7</td>
-                            <td>Projeto7</td>
-                            <td>Natal</td>
-                            <td>d3</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+            <!-- CONTEÚDO: BASE DE DADOS (os scripts SQL) -->
+            <div class="base-conteudo" style="display: none;">
+                <h2>Base de Dados</h2>
+                <p>Recomendo usar a base de dados do Postgre Live pois também funciona no MySQL. </p>
 
-            <div class="db-table">
-                <h3>🧾 ALOCAÇÃO</h3>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>MATRIC</th>
-                            <th>CODIGOP</th>
-                            <th>HORAS</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>100</td>
-                            <td>1</td>
-                            <td>5</td>
-                        </tr>
-                        <tr>
-                            <td>104</td>
-                            <td>7</td>
-                            <td>5</td>
-                        </tr>
-                        <tr>
-                            <td>100</td>
-                            <td>3</td>
-                            <td>10</td>
-                        </tr>
-                        <tr>
-                            <td>103</td>
-                            <td>2</td>
-                            <td>5</td>
-                        </tr>
-                        <tr>
-                            <td>100</td>
-                            <td>6</td>
-                            <td>2</td>
-                        </tr>
-                        <tr>
-                            <td>101</td>
-                            <td>4</td>
-                            <td>5</td>
-                        </tr>
-                        <tr>
-                            <td>102</td>
-                            <td>5</td>
-                            <td>10</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+                <label for="db-select">Escolha a versão:</label>
+                <select id="db-select" onchange="mostrarBaseSelecionada(this.value)">
+                    <option value="postgres">🔵 Postgre Live</option>
+                    <option value="oracle">🟠 Oracle Live</option>
+                </select>
 
-            <div class="db-table">
-                <h3>👨‍👩‍👧 DEPENDENTE</h3>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>CODDEPEND</th>
-                            <th>MAT</th>
-                            <th>NOME</th>
-                            <th>SEXO</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>101</td>
-                            <td>Bernardo Borges Brasão</td>
-                            <td>M</td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>101</td>
-                            <td>Beatriz Borges Brasão</td>
-                            <td>F</td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>104</td>
-                            <td>Eduardo Esdras Euler</td>
-                            <td>M</td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>103</td>
-                            <td>Dayse Dorneles</td>
-                            <td>F</td>
-                        </tr>
-                    </tbody>
-                </table>
+                <div id="base-postgres" class="base-script">
+                    <div class="code-block">
+                        <button class="copy-btn" onclick="copiarCodigo(this)">📋 Copiar</button>
+                        <code>
+-- LIMPEZA (caso já existam as tabelas)
+DROP TABLE IF EXISTS ALOCACAO;
+DROP TABLE IF EXISTS DEPENDENTE;
+DROP TABLE IF EXISTS PROJETO;
+DROP TABLE IF EXISTS EMPREGADO;
+DROP TABLE IF EXISTS DEPARTAMENTO;
+
+-- TABELA: DEPARTAMENTO
+CREATE TABLE DEPARTAMENTO (
+  CODDEP   VARCHAR(5)   NOT NULL,
+  NOME     VARCHAR(60)  NOT NULL,
+  GERENTE  INT,
+  DATAINI  DATE         NOT NULL,
+  PRIMARY KEY (CODDEP)
+);
+
+-- TABELA: EMPREGADO
+CREATE TABLE EMPREGADO (
+  MATRICULA  INT          NOT NULL,
+  NOME       VARCHAR(80)  NOT NULL,
+  ENDERECO   VARCHAR(120),
+  SALARIO    DECIMAL(10,2),
+  SUPERVISOR INT,
+  DEPTO      VARCHAR(5),
+  SEXO       CHAR(1)      NOT NULL,
+  PRIMARY KEY (MATRICULA),
+  CHECK (SEXO IN ('M','F'))
+);
+
+-- TABELA: PROJETO
+CREATE TABLE PROJETO (
+  CODPROJ INT         NOT NULL,
+  NOME    VARCHAR(60) NOT NULL,
+  LOCAL   VARCHAR(60),
+  DEPART  VARCHAR(5)  NOT NULL,
+  PRIMARY KEY (CODPROJ)
+);
+
+-- TABELA: ALOCACAO
+CREATE TABLE ALOCACAO (
+  MATRIC  INT NOT NULL,
+  CODIGOP INT NOT NULL,
+  HORAS   INT NOT NULL,
+  PRIMARY KEY (MATRIC, CODIGOP)
+);
+
+-- TABELA: DEPENDENTE
+CREATE TABLE DEPENDENTE (
+  CODDEPEND INT         NOT NULL,
+  MAT       INT         NOT NULL,
+  NOME      VARCHAR(80) NOT NULL,
+  SEXO      CHAR(1)     NOT NULL,
+  PRIMARY KEY (MAT, CODDEPEND),
+  CHECK (SEXO IN ('M','F'))
+);
+
+-- CHAVES ESTRANGEIRAS
+ALTER TABLE EMPREGADO
+  ADD CONSTRAINT FK_EMPREGADO_DEPTO
+  FOREIGN KEY (DEPTO) REFERENCES DEPARTAMENTO (CODDEP);
+
+ALTER TABLE EMPREGADO
+  ADD CONSTRAINT FK_EMPREGADO_SUPERVISOR
+  FOREIGN KEY (SUPERVISOR) REFERENCES EMPREGADO (MATRICULA);
+
+ALTER TABLE PROJETO
+  ADD CONSTRAINT FK_PROJETO_DEPART
+  FOREIGN KEY (DEPART) REFERENCES DEPARTAMENTO (CODDEP);
+
+ALTER TABLE ALOCACAO
+  ADD CONSTRAINT FK_ALOCACAO_EMP
+  FOREIGN KEY (MATRIC) REFERENCES EMPREGADO (MATRICULA);
+
+ALTER TABLE ALOCACAO
+  ADD CONSTRAINT FK_ALOCACAO_PROJ
+  FOREIGN KEY (CODIGOP) REFERENCES PROJETO (CODPROJ);
+
+ALTER TABLE DEPENDENTE
+  ADD CONSTRAINT FK_DEPENDENTE_EMP
+  FOREIGN KEY (MAT) REFERENCES EMPREGADO (MATRICULA);
+
+-- INSERINDO DADOS
+
+INSERT INTO DEPARTAMENTO (CODDEP, NOME, GERENTE, DATAINI) VALUES 
+('d1','Sistemas',   NULL, '2000-01-01'),
+('d2','Física',     NULL, '2004-01-01'),
+('d3','Matemática', NULL, '2002-01-01');
+
+INSERT INTO EMPREGADO (MATRICULA,NOME,ENDERECO,SALARIO,SUPERVISOR,DEPTO,SEXO) VALUES
+(100,'Ana Ananias Alves','Rua do Amarelo, n 1',1200.00,100,'d1','F'),
+(101,'Bernardo Borges Brasão','Rua do Branco, n 2',900.00,101,'d2','M'),
+(102,'Cleiton Carmelo Cruz','Praça do Cinza, n 3',800.00,101,'d2','M'),
+(103,'Diego Dorneles','Avenida do Damasco, n 4',900.00,100,'d1','M'),
+(104,'Érika Esdras','Rua do Enferrujado, n 5',700.00,104,'d3','F');
+
+UPDATE DEPARTAMENTO SET GERENTE = 100 WHERE CODDEP = 'd1';
+UPDATE DEPARTAMENTO SET GERENTE = 101 WHERE CODDEP = 'd2';
+UPDATE DEPARTAMENTO SET GERENTE = 104 WHERE CODDEP = 'd3';
+
+INSERT INTO PROJETO (CODPROJ,NOME,LOCAL,DEPART) VALUES
+(1,'Projeto1','Campina Grande','d1'),
+(2,'Projeto2','Patos','d3'),
+(3,'Projeto3','Fortaleza','d2'),
+(4,'Projeto4','Campina Grande','d1'),
+(5,'Projeto5','Patos','d1'),
+(6,'Projeto6','Natal','d2'),
+(7,'Projeto7','Natal','d3');
+
+INSERT INTO ALOCACAO (MATRIC,CODIGOP,HORAS) VALUES
+(100,1,5),
+(104,7,5),
+(100,3,10),
+(103,2,5),
+(100,6,2),
+(101,4,5),
+(102,5,10);
+
+INSERT INTO DEPENDENTE (CODDEPEND, MAT, NOME, SEXO) VALUES
+(1,101,'Bernardo Borges Brasão','M'),
+(2,101,'Beatriz Borges Brasão','F'),
+(1,104,'Eduardo Esdras Euler','M'),
+(1,103,'Dayse Dorneles','F');
+
+ALTER TABLE DEPARTAMENTO
+  ADD CONSTRAINT FK_DEPARTAMENTO_GERENTE
+  FOREIGN KEY (GERENTE) REFERENCES EMPREGADO (MATRICULA);
+
+      </code>
+                    </div>
+                </div>
+
+                <div id="base-oracle" class="base-script" style="display: none;">
+                    <div class="code-block">
+                        <button class="copy-btn" onclick="copiarCodigo(this)">📋 Copiar</button>
+                        <code>
+CREATE TABLE departamentos (
+    coddep INT PRIMARY KEY,
+    nome VARCHAR(100)
+);
+
+-- LIMPEZA (pode rodar várias vezes)
+--------------------------------------------------------------------------------
+BEGIN EXECUTE IMMEDIATE 'DROP TABLE ALOCACAO CASCADE CONSTRAINTS'; EXCEPTION WHEN OTHERS THEN NULL; END;
+/
+BEGIN EXECUTE IMMEDIATE 'DROP TABLE DEPENDENTE CASCADE CONSTRAINTS'; EXCEPTION WHEN OTHERS THEN NULL; END;
+/
+BEGIN EXECUTE IMMEDIATE 'DROP TABLE PROJETO CASCADE CONSTRAINTS'; EXCEPTION WHEN OTHERS THEN NULL; END;
+/
+BEGIN EXECUTE IMMEDIATE 'DROP TABLE EMPREGADO CASCADE CONSTRAINTS'; EXCEPTION WHEN OTHERS THEN NULL; END;
+/
+BEGIN EXECUTE IMMEDIATE 'DROP TABLE DEPARTAMENTO CASCADE CONSTRAINTS'; EXCEPTION WHEN OTHERS THEN NULL; END;
+/
+
+--------------------------------------------------------------------------------
+-- CRIAÇÃO DE TABELAS
+--------------------------------------------------------------------------------
+
+-- DEPARTAMENTO (sem FK de GERENTE por enquanto)
+CREATE TABLE DEPARTAMENTO (
+  CODDEP   VARCHAR2(5)   NOT NULL,
+  NOME     VARCHAR2(60)  NOT NULL,
+  GERENTE  NUMBER,                -- será preenchido depois
+  DATAINI  DATE          NOT NULL,
+  CONSTRAINT PK_DEPARTAMENTO PRIMARY KEY (CODDEP)
+);
+
+-- EMPREGADO
+CREATE TABLE EMPREGADO (
+  MATRICULA  NUMBER        NOT NULL,
+  NOME       VARCHAR2(80)  NOT NULL,
+  ENDERECO   VARCHAR2(120),
+  SALARIO    NUMBER(10,2),
+  SUPERVISOR NUMBER,                 -- auto-FK
+  DEPTO      VARCHAR2(5),            -- FK para DEPARTAMENTO
+  SEXO       CHAR(1)       NOT NULL,
+  CONSTRAINT PK_EMPREGADO PRIMARY KEY (MATRICULA),
+  CONSTRAINT CK_EMPREGADO_SEXO CHECK (SEXO IN ('M','F'))
+);
+
+-- PROJETO
+CREATE TABLE PROJETO (
+  CODPROJ NUMBER       NOT NULL,
+  NOME    VARCHAR2(60) NOT NULL,
+  LOCAL   VARCHAR2(60),
+  DEPART  VARCHAR2(5)  NOT NULL,
+  CONSTRAINT PK_PROJETO PRIMARY KEY (CODPROJ)
+);
+
+-- ALOCACAO
+CREATE TABLE ALOCACAO (
+  MATRIC  NUMBER     NOT NULL,
+  CODIGOP NUMBER     NOT NULL,
+  HORAS   NUMBER(5)  NOT NULL,
+  CONSTRAINT PK_ALOCACAO PRIMARY KEY (MATRIC, CODIGOP)
+);
+
+-- DEPENDENTE
+CREATE TABLE DEPENDENTE (
+  CODDEPEND NUMBER       NOT NULL,
+  MAT       NUMBER       NOT NULL,
+  NOME      VARCHAR2(80) NOT NULL,
+  SEXO      CHAR(1)      NOT NULL,
+  CONSTRAINT PK_DEPENDENTE PRIMARY KEY (MAT, CODDEPEND),
+  CONSTRAINT CK_DEPENDENTE_SEXO CHECK (SEXO IN ('M','F'))
+);
+
+--------------------------------------------------------------------------------
+-- CHAVES ESTRANGEIRAS (somente as que não atrapalham a carga inicial)
+--------------------------------------------------------------------------------
+
+-- EMPREGADO -> DEPARTAMENTO (já pode existir)
+ALTER TABLE EMPREGADO
+  ADD CONSTRAINT FK_EMPREGADO_DEPTO
+  FOREIGN KEY (DEPTO) REFERENCES DEPARTAMENTO (CODDEP);
+
+-- EMPREGADO (SUPERVISOR) -> EMPREGADO (auto-referência, adia validação p/ COMMIT)
+ALTER TABLE EMPREGADO
+  ADD CONSTRAINT FK_EMPREGADO_SUPERVISOR
+  FOREIGN KEY (SUPERVISOR) REFERENCES EMPREGADO (MATRICULA)
+  DEFERRABLE INITIALLY DEFERRED;
+
+-- PROJETO -> DEPARTAMENTO
+ALTER TABLE PROJETO
+  ADD CONSTRAINT FK_PROJETO_DEPART
+  FOREIGN KEY (DEPART) REFERENCES DEPARTAMENTO (CODDEP);
+
+-- ALOCACAO -> EMPREGADO / PROJETO
+ALTER TABLE ALOCACAO
+  ADD CONSTRAINT FK_ALOCACAO_EMP
+  FOREIGN KEY (MATRIC) REFERENCES EMPREGADO (MATRICULA);
+
+ALTER TABLE ALOCACAO
+  ADD CONSTRAINT FK_ALOCACAO_PROJ
+  FOREIGN KEY (CODIGOP) REFERENCES PROJETO (CODPROJ);
+
+-- DEPENDENTE -> EMPREGADO
+ALTER TABLE DEPENDENTE
+  ADD CONSTRAINT FK_DEPENDENTE_EMP
+  FOREIGN KEY (MAT) REFERENCES EMPREGADO (MATRICULA);
+
+--------------------------------------------------------------------------------
+-- CARGA DE DADOS
+--------------------------------------------------------------------------------
+
+-- 1) DEPARTAMENTOS (sem gerente por enquanto)
+INSERT INTO DEPARTAMENTO (CODDEP, NOME, GERENTE, DATAINI) VALUES ('d1','Sistemas',   NULL, TO_DATE('01/01/2000','DD/MM/YYYY'));
+INSERT INTO DEPARTAMENTO (CODDEP, NOME, GERENTE, DATAINI) VALUES ('d2','Física',     NULL, TO_DATE('01/01/2004','DD/MM/YYYY'));
+INSERT INTO DEPARTAMENTO (CODDEP, NOME, GERENTE, DATAINI) VALUES ('d3','Matemática', NULL, TO_DATE('01/01/2002','DD/MM/YYYY'));
+
+-- 2) EMPREGADOS
+INSERT INTO EMPREGADO (MATRICULA,NOME,ENDERECO,SALARIO,SUPERVISOR,DEPTO,SEXO) VALUES
+(100,'Ana Ananias Alves','Rua do Amarelo, n 1', 1200.00, 100,'d1','F');
+
+INSERT INTO EMPREGADO (MATRICULA,NOME,ENDERECO,SALARIO,SUPERVISOR,DEPTO,SEXO) VALUES
+(101,'Bernardo Borges Brasão','Rua do Branco, n 2', 900.00, 101,'d2','M');
+
+INSERT INTO EMPREGADO (MATRICULA,NOME,ENDERECO,SALARIO,SUPERVISOR,DEPTO,SEXO) VALUES
+(102,'Cleiton Carmelo Cruz','Praça do Cinza, n 3', 800.00, 101,'d2','M');
+
+INSERT INTO EMPREGADO (MATRICULA,NOME,ENDERECO,SALARIO,SUPERVISOR,DEPTO,SEXO) VALUES
+(103,'Diego Dorneles','Avenida do Damasco, n 4', 900.00, 100,'d1','M');
+
+INSERT INTO EMPREGADO (MATRICULA,NOME,ENDERECO,SALARIO,SUPERVISOR,DEPTO,SEXO) VALUES
+(104,'Érika Esdras','Rua do Enferrujado, n 5', 700.00, 104,'d3','F');
+
+-- 3) Agora que EMPREGADO existe, setar GERENTE nos departamentos
+UPDATE DEPARTAMENTO SET GERENTE = 100 WHERE CODDEP = 'd1';
+UPDATE DEPARTAMENTO SET GERENTE = 101 WHERE CODDEP = 'd2';
+UPDATE DEPARTAMENTO SET GERENTE = 104 WHERE CODDEP = 'd3';
+
+-- 4) PROJETOS
+INSERT INTO PROJETO (CODPROJ,NOME,LOCAL,DEPART) VALUES (1,'Projeto1','Campina Grande','d1');
+INSERT INTO PROJETO (CODPROJ,NOME,LOCAL,DEPART) VALUES (2,'Projeto2','Patos','d3');
+INSERT INTO PROJETO (CODPROJ,NOME,LOCAL,DEPART) VALUES (3,'Projeto3','Fortaleza','d2');
+INSERT INTO PROJETO (CODPROJ,NOME,LOCAL,DEPART) VALUES (4,'Projeto4','Campina Grande','d1');
+INSERT INTO PROJETO (CODPROJ,NOME,LOCAL,DEPART) VALUES (5,'Projeto5','Patos','d1');
+INSERT INTO PROJETO (CODPROJ,NOME,LOCAL,DEPART) VALUES (6,'Projeto6','Natal','d2');
+INSERT INTO PROJETO (CODPROJ,NOME,LOCAL,DEPART) VALUES (7,'Projeto7','Natal','d3');
+
+-- 5) ALOCAÇÕES
+INSERT INTO ALOCACAO (MATRIC,CODIGOP,HORAS) VALUES (100,1, 5);
+INSERT INTO ALOCACAO (MATRIC,CODIGOP,HORAS) VALUES (104,7, 5);
+INSERT INTO ALOCACAO (MATRIC,CODIGOP,HORAS) VALUES (100,3,10);
+INSERT INTO ALOCACAO (MATRIC,CODIGOP,HORAS) VALUES (103,2, 5);
+INSERT INTO ALOCACAO (MATRIC,CODIGOP,HORAS) VALUES (100,6, 2);
+INSERT INTO ALOCACAO (MATRIC,CODIGOP,HORAS) VALUES (101,4, 5);
+INSERT INTO ALOCACAO (MATRIC,CODIGOP,HORAS) VALUES (102,5,10);
+
+-- 6) DEPENDENTES
+INSERT INTO DEPENDENTE (CODDEPEND, MAT, NOME, SEXO) VALUES (1,101,'Bernardo Borges Brasão','M');
+INSERT INTO DEPENDENTE (CODDEPEND, MAT, NOME, SEXO) VALUES (2,101,'Beatriz Borges Brasão','F');
+INSERT INTO DEPENDENTE (CODDEPEND, MAT, NOME, SEXO) VALUES (1,104,'Eduardo Esdras Euler','M');
+INSERT INTO DEPENDENTE (CODDEPEND, MAT, NOME, SEXO) VALUES (1,103,'Dayse Dorneles','F');
+
+COMMIT;
+
+--------------------------------------------------------------------------------
+-- SÓ AGORA: FK DO GERENTE (já com os dados consistentes)
+--------------------------------------------------------------------------------
+ALTER TABLE DEPARTAMENTO
+  ADD CONSTRAINT FK_DEPARTAMENTO_GERENTE
+  FOREIGN KEY (GERENTE) REFERENCES EMPREGADO (MATRICULA);
+
+-- CONSULTAS DE CHECAGEM (opcionais)
+-- SELECT * FROM DEPARTAMENTO;
+-- SELECT * FROM EMPREGADO;
+-- SELECT * FROM PROJETO;
+-- SELECT * FROM ALOCACAO;
+-- SELECT * FROM DEPENDENTE;
+);
+      </code>
+                    </div>
+                </div>
             </div>
         </section>
-
-
-
 
         <div class="filters">
             <button class="filter-btn active" onclick="filtrarPorTopico('todos')">Todos</button>
             <button class="filter-btn" onclick="filtrarPorTopico('fase 1')">Fase 1</button>
             <button class="filter-btn" onclick="filtrarPorTopico('fase 2')">Fase 2</button>
-            <button class="filter-btn" onclick="filtrarPorTopico('base')">Base de Dados</button>
-
         </div>
 
         <main class="content" id="exercicios-container">
@@ -277,8 +618,8 @@
         </main>
 
         <footer class="footer">
-            <p>© 2025 - Exercícios de Banco de Dados | <span id="total-exercicios"></span> exercícios/base de dados
-                cadastradas</p>
+            <p>© 2025 - Exercícios de Banco de Dados | <span id="total-exercicios"></span> exercícios
+                cadastrados</p>
         </footer>
     </div>
 

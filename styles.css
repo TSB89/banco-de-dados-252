@@ -22,7 +22,7 @@ body {
     text-align: center;
     color: white;
     margin-bottom: 20px;
-    padding: 40px 20px;
+    padding: 20px 20px;
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(10px);
     border-radius: 20px;
@@ -343,7 +343,7 @@ body {
     padding: 25px;
     border-radius: 15px;
     margin-bottom: 40px;
-    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
 }
 
 .db-exemplo h2 {
@@ -397,4 +397,16 @@ body {
 
 .db-table tr:hover {
     background: #f0f0ff;
+}
+
+.db-botoes {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    margin-bottom: -10px;
+    flex-wrap: wrap;
+}
+
+.db-exemplo .toggle-btn {
+    min-width: 180px;
 }
