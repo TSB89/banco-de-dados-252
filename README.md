@@ -1,6 +1,6 @@
 # 📚 Exercícios de Banco de Dados
 
-Landing page para documentação e estudo de exercícios de Banco de Dados da faculdade Unifacisa, desenvolvida com **Programação Orientada a Objetos (POO)** e **JavaScript**.
+Página web desenvolvida em **JavaScript**, utilizando **Programação Orientada a Objetos**, para documentação e estudo de exercícios de Banco de Dados da faculdade Unifacisa.
 
 ## 📖 Como Executar
 Você pode acessar o projeto de duas formas:
